@@ -39,3 +39,14 @@
 .remix .name, .remix .code { flex: 1; min-width: 140px; font: inherit; font-size: 13px; border: 0; background: rgba(255,255,255,.9); border-radius: 10px; padding: 8px 10px; color: var(--ink); }
 .remix label { font-size: 12px; display: inline-flex; align-items: center; gap: 4px; color: var(--ink); }
 .notice { margin-top: 8px; font-size: 12px; background: #fff3e8; color: #9a3b00; padding: 6px 10px; border-radius: 10px; word-break: break-all; }
+/* Demo mode */
+.demo-halo { position: fixed; left: -18px; top: -18px; width: 36px; height: 36px; border-radius: 50%; pointer-events: none; opacity: 0; background: rgba(255,122,26,.28); box-shadow: 0 0 0 2px rgba(255,122,26,.9), 0 0 24px rgba(255,122,26,.6); transition: opacity .2s, width .12s, height .12s, left .12s, top .12s, background .12s; z-index: 10; }
+.demo-halo.on { opacity: 1; } .demo-halo.press { width: 26px; height: 26px; left: -13px; top: -13px; background: rgba(255,122,26,.7); }
+.demo-ripple { position: fixed; left: -40px; top: -40px; width: 80px; height: 80px; border-radius: 50%; pointer-events: none; border: 3px solid rgba(255,122,26,.95); animation: demo-ripple .7s ease-out forwards; z-index: 9; }
+@keyframes demo-ripple { from { opacity: 1; scale: .2; } to { opacity: 0; scale: 1.4; } }
+.demo-keys { position: fixed; left: 50%; bottom: 36px; transform: translateX(-50%); display: flex; gap: 8px; pointer-events: none; z-index: 10; }
+.demo-keys kbd { font: 700 22px/1 -apple-system, system-ui, sans-serif; color: #111; background: #fff; padding: 12px 18px; border-radius: 12px; box-shadow: 0 6px 0 #c8c8cc, 0 14px 30px -10px rgba(0,0,0,.5); animation: demo-key-in .18s cubic-bezier(.2,.9,.3,1.4); transition: opacity .3s, transform .3s; }
+.demo-keys kbd.out { opacity: 0; transform: translateY(10px); }
+@keyframes demo-key-in { from { transform: scale(.6); opacity: 0; } }
+.demo-cap { position: fixed; left: 50%; top: 28px; transform: translateX(-50%) translateY(-10px); pointer-events: none; font: 600 20px/1 -apple-system, system-ui, sans-serif; letter-spacing: -.01em; color: #fff; background: rgba(17,17,20,.85); backdrop-filter: blur(10px); padding: 12px 20px; border-radius: 999px; box-shadow: 0 14px 40px -14px rgba(0,0,0,.6); opacity: 0; transition: opacity .25s, transform .3s cubic-bezier(.2,.8,.2,1); z-index: 10; white-space: nowrap; }
+.demo-cap.on { opacity: 1; transform: translateX(-50%) translateY(0); }

@@ -64,7 +64,7 @@
     teardownEdition();
     const ed = resolveEdition(id);
     if (leavingRelayout && !(ed && ed.relayout)) unpeelHard();
-    if (!ed) { refresh(); return; }
+    if (!ed) { refresh(); Peel.demo && Peel.demo.caption('🌐 Original'); return; }
     const css = Peel.css[ed.css] || '';
     const st = document.createElement('style'); st.id = 'peel-edition-style'; st.textContent = css; (document.head || document.documentElement).appendChild(st);
     document.documentElement.dataset.peelEdition = ed.base || ed.id;
@@ -73,7 +73,7 @@
     const fx = fxHost.attachShadow({ mode: 'open' }); const fst = document.createElement('style'); fst.textContent = (Peel.css['src/fx/overlays.css'] || '') + '\n' + css; fx.appendChild(fst);
     document.body.appendChild(fxHost); S.fxHost = fxHost;
     S.edition = ed.id; S.lastPack = ed.pack || 'core';
-    applyCounter(ed);
+    applyCounter(ed); Peel.demo && Peel.demo.caption(`${ed.emoji ? ed.emoji + ' ' : ''}${ed.name}`);
     const stops = []; const ctx = { fx, motion: motionOK(), onDestroy: (fn) => stops.push(fn) };
     try { stops.push(Peel.fx.run(ed.fx || [], ctx)); } catch (e) { void e; }
     try { ed.apply && ed.apply(document, ctx); } catch (e) { void e; }
@@ -326,9 +326,9 @@ html[data-peel-mode="replace"] body { overflow: hidden !important; }`;
     mood: (m) => { S.prefs = { ...S.prefs, mood: m }; Peel.store.setPrefs({ mood: m }); const id = moodEdition(); if (id !== undefined && id !== S.edition && !S.excluded) switchEdition(id, { persist: false }); S.picker && S.picker.refresh(); },
     patina: (on) => { S.prefs = { ...S.prefs, patina: on }; Peel.store.setPrefs({ patina: on }); patina(); S.picker && S.picker.refresh(); },
     shot: () => shareShot(),
-    toy: (id) => { if (!Peel.toys) return; if (Peel.toys.current() === id) Peel.toys.drop(); else { document.getElementById('peel-wall')?.remove(); Peel.toys.pick(id); S.picker && S.picker.close(); const t = Peel.toys.list().find((x) => x.id === id); S.curl && S.curl.say(t ? `${t.emoji} ${t.hint}  (Esc drops it · R rewinds)` : '', 7000); } if (id !== 'spray') wall(); S.picker && S.picker.refresh(); },
+    toy: (id) => { if (!Peel.toys) return; if (Peel.toys.current() === id) Peel.toys.drop(); else { document.getElementById('peel-wall')?.remove(); Peel.toys.pick(id); S.picker && S.picker.close(); const t = Peel.toys.list().find((x) => x.id === id); S.curl && S.curl.say(t ? `${t.emoji} ${t.hint}  (Esc drops it · R rewinds)` : '', 7000); Peel.demo && t && Peel.demo.caption(`${t.emoji} ${t.name}`); } if (id !== 'spray') wall(); S.picker && S.picker.refresh(); },
     dropToy: () => { Peel.toys && Peel.toys.drop(); wall(); S.picker && S.picker.refresh(); },
-    rewind: async () => { if (Peel.toys) await Peel.toys.rewind(); if (S.hasWall && Peel.toys && Peel.toys.current() !== 'spray') { await Peel.store.setGraffiti(host(), null); Peel.wallChanged(false); } },
+    rewind: async () => { Peel.demo && Peel.demo.caption('◀◀ Rewind'); if (Peel.toys) await Peel.toys.rewind(); if (S.hasWall && Peel.toys && Peel.toys.current() !== 'spray') { await Peel.store.setGraffiti(host(), null); Peel.wallChanged(false); } },
     clearWall: async () => { await Peel.store.setGraffiti(host(), null); wall(); },
     transition: (t) => { S.prefs = { ...S.prefs, transition: t }; Peel.store.setPrefs({ transition: t }); S.picker && S.picker.refresh(); },
     mode: (id) => Peel.store.site().then((site) => applyMode(id, site.last === id ? site.variant : undefined)),
@@ -352,6 +352,7 @@ html[data-peel-mode="replace"] body { overflow: hidden !important; }`;
     S.curl = new Peel.Curl(shadow, dragHandlers);
     S.curl.size(true);
     S.picker = Peel.picker.mount(shadow, status, actions);
+    S.demoRoot = shadow; Peel.demo && Peel.demo.set(!!S.prefs.demo, shadow);
     if (S.prefs.fab === false) ui.style.display = 'none';
     document.addEventListener('keydown', (e) => {
       if ((e.target && /input|textarea|select/i.test(e.target.tagName)) || e.target?.isContentEditable) return;
@@ -379,7 +380,7 @@ html[data-peel-mode="replace"] body { overflow: hidden !important; }`;
     if (ch.custom) S.custom = ch.custom.newValue || {};
     if (ch.edition) { S.globalEdition = ch.edition.newValue || null; if (!S.excluded && !S.busy && S.globalEdition !== S.edition) { setEditionInstant(S.globalEdition); relayoutNow(); } }
     if (ch.excluded) { const ex = !!((ch.excluded.newValue || {})[host()]); if (ex !== S.excluded) { S.excluded = ex; if (ex) { if (S.mode) unpeelHard(); teardownEdition(); refresh(); } else if (S.globalEdition) { setEditionInstant(S.globalEdition); relayoutNow(); } } }
-    if (ch.prefs) { const was = S.prefs; S.prefs = ch.prefs.newValue || {}; if (S.ui) S.ui.style.display = S.prefs.fab === false ? 'none' : ''; if (Peel.sound) Peel.sound.setEnabled(!!S.prefs.sound); if ((!!was.sound !== !!S.prefs.sound || !!was.motion !== !!S.prefs.motion) && S.edition) setEditionInstant(S.edition); if (!!was.patina !== !!S.prefs.patina) patina(); }
+    if (ch.prefs) { const was = S.prefs; S.prefs = ch.prefs.newValue || {}; if (S.ui) S.ui.style.display = S.prefs.fab === false ? 'none' : ''; if (Peel.sound) Peel.sound.setEnabled(!!S.prefs.sound); if ((!!was.sound !== !!S.prefs.sound || !!was.motion !== !!S.prefs.motion) && S.edition) setEditionInstant(S.edition); if (!!was.patina !== !!S.prefs.patina) patina(); if (Peel.demo && S.demoRoot) Peel.demo.set(!!S.prefs.demo, S.demoRoot); }
   });
   const watch = Peel.dom.debounce(() => {
     if (S.busy || S.curl?.dragging) return;

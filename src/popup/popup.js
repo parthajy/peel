@@ -38,9 +38,9 @@ async function draw() {
     h('label', { class: 'excl' }, h('input', { type: 'checkbox', checked: st.excluded ? true : null, onChange: async (e) => { await send({ type: 'peel:exclude', on: e.target.checked }); later(draw); } }), `Not on ${st.host}`),
   ));
 }
-chrome.storage.sync.get('prefs', ({ prefs = { fab: true, motion: true } }) => { $('#fab').checked = prefs.fab !== false; $('#motion').checked = prefs.motion !== false; $('#sound').checked = !!prefs.sound; $('#quips').checked = prefs.quips !== false; $('#patina').checked = !!prefs.patina; });
+chrome.storage.sync.get('prefs', ({ prefs = { fab: true, motion: true } }) => { $('#fab').checked = prefs.fab !== false; $('#motion').checked = prefs.motion !== false; $('#sound').checked = !!prefs.sound; $('#quips').checked = prefs.quips !== false; $('#patina').checked = !!prefs.patina; $('#demo').checked = !!prefs.demo; });
 const setPref = (k, v) => chrome.storage.sync.get('prefs', ({ prefs = {} }) => chrome.storage.sync.set({ prefs: { ...prefs, [k]: v } }));
 $('#fab').addEventListener('change', (e) => { setPref('fab', e.target.checked); send({ type: 'peel:fab', on: e.target.checked }); });
-for (const k of ['motion', 'sound', 'quips', 'patina']) $('#' + k).addEventListener('change', (e) => setPref(k, e.target.checked));
+for (const k of ['motion', 'sound', 'quips', 'patina', 'demo']) $('#' + k).addEventListener('change', (e) => setPref(k, e.target.checked));
 $('#gear').addEventListener('click', () => { $('#settings').hidden = !$('#settings').hidden; });
 draw();
