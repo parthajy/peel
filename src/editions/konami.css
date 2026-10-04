@@ -1,0 +1,13 @@
+html[data-peel-edition="konami"] { filter: saturate(1.8) contrast(1.08) hue-rotate(var(--peel-hue, 0deg)); background: #120020; }
+html[data-peel-edition="konami"] body { background: linear-gradient(135deg, #1a0033, #001a33 50%, #330014) fixed !important; color: #fff !important; }
+html[data-peel-edition="konami"] *:not(svg *):not(pre):not(code) { font-family: "Press Start 2P", "Courier New", monospace !important; }
+html[data-peel-edition="konami"] :is(h1, h2, h3):not(svg *) { background: linear-gradient(90deg, #ff004c, #ffb700, #00ff85, #00c2ff, #b000ff, #ff004c); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent !important; animation: peel-rainbow 4s linear infinite; text-transform: uppercase; letter-spacing: .06em !important; font-size: .9em !important; line-height: 1.4 !important; }
+@keyframes peel-rainbow { to { background-position: 300% 0; } }
+html[data-peel-edition="konami"] :is(p, li, span, td, a, label, small, time) { font-size: .78em !important; line-height: 1.7 !important; color: #e9e3ff !important; }
+html[data-peel-edition="konami"] :is(article, [class*="card"], [class*="Card"], [class*="post"], [class*="tile"], aside, nav, header, footer) { background: rgba(0,0,0,.55) !important; border: 3px solid #fff !important; box-shadow: 6px 6px 0 #ff004c, 12px 12px 0 #00c2ff !important; border-radius: 0 !important; }
+html[data-peel-edition="konami"] :is(img, video, picture) { image-rendering: pixelated; border: 3px solid #fff; box-shadow: 6px 6px 0 #ffb700; filter: saturate(1.5) contrast(1.2); }
+html[data-peel-edition="konami"] :is(button, [role="button"], input[type="submit"]) { background: #ffb700 !important; color: #000 !important; border: 3px solid #fff !important; box-shadow: 4px 4px 0 #000 !important; border-radius: 0 !important; text-transform: uppercase; }
+html[data-peel-edition="konami"] a:not([role="button"]) { color: #00ff85 !important; text-decoration: none !important; }
+html[data-peel-edition="konami"] a:hover:not([role="button"]) { color: #ffb700 !important; }
+html[data-peel-edition="konami"] a:not([role="button"])::before { content: "▶ "; font-size: .7em; }
+html[data-peel-edition="konami"] ::selection { background: #ff004c; color: #fff; }

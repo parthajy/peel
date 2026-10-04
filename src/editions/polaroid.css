@@ -1,0 +1,9 @@
+html[data-peel-edition="polaroid"] { filter: saturate(.9) sepia(.12) contrast(1.02); background: #e9e4da; }
+html[data-peel-edition="polaroid"] body { background-color: #efeae0 !important; }
+html[data-peel-edition="polaroid"] *:not(svg *):not(pre):not(code) { font-family: "Georgia", "Iowan Old Style", serif !important; }
+html[data-peel-edition="polaroid"] :is(h1, h2, h3):not(svg *) { font-family: "Bradley Hand", "Segoe Print", "Marker Felt", cursive !important; font-weight: 700 !important; color: #2b2622 !important; }
+html[data-peel-edition="polaroid"] img[data-peel-cap] { padding: 12px 12px 44px !important; background: #fff !important; box-shadow: 0 10px 24px -8px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.2) !important; transform: rotate(var(--tilt, -2deg)); border-radius: 2px !important; box-sizing: border-box; filter: saturate(1.15) contrast(1.05) sepia(.08); outline: 0 !important; transition: transform .25s ease; }
+html[data-peel-edition="polaroid"] img[data-peel-cap]:hover { transform: rotate(0) scale(1.03); z-index: 5; position: relative; }
+html[data-peel-edition="polaroid"] :is(article, [class*="card"], [class*="Card"], [class*="post"], [class*="tile"]) { background: transparent !important; border: 0 !important; box-shadow: none !important; }
+html[data-peel-edition="polaroid"] a:not([role="button"]) { color: #8a3b12 !important; }
+html[data-peel-edition="polaroid"] :is(button, [role="button"], input[type="submit"]) { background: #2b2622 !important; color: #fff !important; border: 0 !important; border-radius: 4px !important; }

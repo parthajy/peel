@@ -1,0 +1,6 @@
+html[data-peel-edition="vhs"] { filter: saturate(1.35) contrast(1.05) brightness(.96) url(#peel-vhs); background: #111; }
+html[data-peel-edition="vhs"] :is(h1, h2, h3):not(svg *) { text-shadow: -2px 0 rgba(255,0,60,.6), 2px 0 rgba(0,255,255,.6); }
+html[data-peel-edition="vhs"] :is(img, video, picture) { filter: contrast(1.1) saturate(1.3) blur(.3px); }
+html[data-peel-edition="vhs"] *:not(svg *) { border-radius: 0 !important; }
+.fx-vhs-osd { position: fixed; left: 28px; bottom: 28px; pointer-events: none; display: flex; flex-direction: column; gap: 4px; font: 700 20px/1.1 "VT323", "Courier New", monospace; color: #fff; text-shadow: 0 0 6px rgba(255,255,255,.7), 2px 0 rgba(255,0,60,.5), -2px 0 rgba(0,255,255,.5); letter-spacing: .08em; }
+.fx-vhs-osd b { color: #fff; } .fx-vhs-osd span { font-size: 15px; opacity: .9; }

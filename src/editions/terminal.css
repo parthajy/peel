@@ -1,0 +1,15 @@
+/* Inverted + hue-rotated base, then sepia/hue to push everything green. Colours below are flipped-luminance. */
+html[data-peel-edition="terminal"] { filter: invert(1) hue-rotate(180deg) grayscale(1) sepia(1) hue-rotate(60deg) saturate(3.5) contrast(1.15) brightness(.95); background: #fff; }
+html[data-peel-edition="terminal"] :is(img, video, canvas, picture, iframe, embed, object, svg image, #peel-ui, #peel-fx, #peel-root) { filter: invert(1) hue-rotate(180deg); }
+html[data-peel-edition="terminal"] :is(img, video, picture) { filter: invert(1) hue-rotate(180deg) grayscale(1) contrast(1.3); opacity: .85; }
+html[data-peel-edition="terminal"] *:not(svg *) { font-family: ui-monospace, "SF Mono", Menlo, "Courier New", monospace !important; border-radius: 0 !important; box-shadow: none !important; }
+html[data-peel-edition="terminal"] :is(h1, h2, h3):not(svg *) { text-transform: uppercase; font-weight: 700 !important; }
+html[data-peel-edition="terminal"] :is(h1, h2, h3):not(svg *)::before { content: "> "; opacity: .7; }
+html[data-peel-edition="terminal"] h1:not(svg *)::after { content: "_"; animation: peel-caret 1s steps(2) infinite; }
+@keyframes peel-caret { 50% { opacity: 0; } }
+html[data-peel-edition="terminal"] :is(article, [class*="card"], [class*="Card"], [class*="post"], [class*="tile"], aside, nav) { border: 1px solid currentColor !important; background: transparent !important; }
+html[data-peel-edition="terminal"] :is(button, [role="button"], input[type="submit"]) { border: 1px solid currentColor !important; background: transparent !important; text-transform: uppercase; }
+html[data-peel-edition="terminal"] :is(button, [role="button"]):hover { background: currentColor !important; }
+html[data-peel-edition="terminal"] a:not([role="button"]) { text-decoration: none !important; }
+html[data-peel-edition="terminal"] a:not([role="button"])::before { content: "["; } html[data-peel-edition="terminal"] a:not([role="button"])::after { content: "]"; }
+html[data-peel-edition="terminal"] ::selection { background: #0a0; color: #000; }

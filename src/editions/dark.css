@@ -1,0 +1,5 @@
+html[data-peel-edition="dark"]:not([data-peel-already-dark]) { filter: invert(1) hue-rotate(180deg); background: #fff; }
+html[data-peel-edition="dark"]:not([data-peel-already-dark]) :is(img, video, canvas, picture, iframe, embed, object, svg image, [style*="background-image"], #peel-ui, #peel-fx, #peel-root) { filter: invert(1) hue-rotate(180deg); }
+html[data-peel-edition="dark"]:not([data-peel-already-dark]) [style*="background-image"] :is(img, video, picture) { filter: none; }
+html[data-peel-edition="dark"] { color-scheme: dark; }
+html[data-peel-edition="dark"] ::selection { background: #b35a2a; }

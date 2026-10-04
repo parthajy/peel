@@ -1,0 +1,25 @@
+/* Page-level motion. Injected into the page document while an edition uses enter/ambient/skew. */
+@property --peel-hue { syntax: '<angle>'; inherits: true; initial-value: 0deg; }
+html[data-peel-enter] [data-peel-out] { transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1), filter .7s, clip-path .9s steps(var(--n, 30)); transition-delay: calc(var(--i, 0) * 40ms); }
+html[data-peel-enter="rise"] [data-peel-out]:not([data-peel-in]) { opacity: 0; transform: translateY(18px) scale(.985); }
+html[data-peel-enter="fade"] [data-peel-out]:not([data-peel-in]) { opacity: 0; }
+html[data-peel-enter="slide"] [data-peel-out]:not([data-peel-in]) { opacity: 0; transform: translateX(-28px); }
+html[data-peel-enter="blur"] [data-peel-out]:not([data-peel-in]) { opacity: 0; filter: blur(10px); }
+html[data-peel-enter="stamp"] [data-peel-out]:not([data-peel-in]) { opacity: 0; transform: scale(1.25); }
+html[data-peel-enter="flip"] [data-peel-out]:not([data-peel-in]) { opacity: 0; transform: perspective(900px) rotateX(-35deg); transform-origin: top; }
+html[data-peel-enter="typewriter"] :is(h1,h2,h3)[data-peel-out]:not([data-peel-in]) { clip-path: inset(0 100% 0 0); }
+html[data-peel-enter="typewriter"] :is(h1,h2,h3)[data-peel-out][data-peel-in] { clip-path: inset(0 0 0 0); }
+html[data-peel-enter="typewriter"] :not(h1):not(h2):not(h3)[data-peel-out]:not([data-peel-in]) { opacity: 0; }
+html[data-peel-ambient~="flicker"] :is(h1, h2, h3, a):not(svg *) { animation: peel-flicker 7s infinite; }
+@keyframes peel-flicker { 0%, 100% { opacity: 1; } 92% { opacity: 1; } 93% { opacity: .35; } 94% { opacity: 1; } 96% { opacity: .5; } 97% { opacity: 1; } }
+html[data-peel-ambient~="breathe"] :is(img, video, [class*="card"], article) { animation: peel-breathe 7s ease-in-out infinite; }
+@keyframes peel-breathe { 50% { transform: scale(1.012); } }
+html[data-peel-ambient~="sway"] :is(article, [class*="card"], [class*="post"], figure, img) { animation: peel-sway 9s ease-in-out infinite; transform-origin: top center; }
+@keyframes peel-sway { 25% { transform: rotate(.6deg) translateX(2px); } 75% { transform: rotate(-.6deg) translateX(-2px); } }
+html[data-peel-ambient~="hue"] { animation: peel-hue 30s linear infinite; }
+@keyframes peel-hue { to { --peel-hue: 360deg; } }
+html[data-peel-ambient~="heartbeat"] :is(h1, h2, button, [role="button"]) { animation: peel-heart 1.4s ease-in-out infinite; }
+@keyframes peel-heart { 0%, 30%, 100% { transform: scale(1); } 10% { transform: scale(1.04); } 20% { transform: scale(1.01); } }
+html[data-peel-ambient~="melt"] :is(img, article, [class*="card"], h1, h2, nav, header) { transform: scaleY(calc(1 + var(--peel-melt, 0) * .3)) skewX(calc(var(--peel-melt, 0) * -5deg)); transform-origin: top center; transition: transform 2s ease; border-bottom-left-radius: calc(var(--peel-melt, 0) * 40%) !important; border-bottom-right-radius: calc(var(--peel-melt, 0) * 60%) !important; }
+html[data-peel-ambient~="melt"] :is(h1, h2, h3, p) { letter-spacing: calc(var(--peel-melt, 0) * .12em); }
+html[data-peel-skew] :is(article, [class*="card"], [class*="post"], main > *, img) { transform: skewY(calc(var(--peel-skew, 0) * 1deg)); transition: transform .15s ease-out; }

@@ -1,0 +1,8 @@
+html[data-peel-edition="matrix"] { filter: invert(1) hue-rotate(180deg) grayscale(1) sepia(1) hue-rotate(70deg) saturate(4) contrast(1.2) brightness(.9); background: #fff; }
+html[data-peel-edition="matrix"] :is(canvas, iframe, embed, object, #peel-ui, #peel-fx, #peel-root) { filter: invert(1) hue-rotate(180deg); }
+html[data-peel-edition="matrix"] :is(img, video, picture) { filter: invert(1) hue-rotate(180deg) grayscale(1) contrast(1.4); opacity: .8; }
+html[data-peel-edition="matrix"] *:not(svg *) { font-family: ui-monospace, "SF Mono", Menlo, "Courier New", monospace !important; border-radius: 0 !important; box-shadow: none !important; }
+html[data-peel-edition="matrix"] :is(h1, h2, h3):not(svg *) { text-transform: uppercase; letter-spacing: .12em !important; }
+html[data-peel-edition="matrix"] :is(article, [class*="card"], [class*="Card"], [class*="post"], [class*="tile"], aside, nav) { border: 1px solid currentColor !important; background: rgba(255,255,255,.75) !important; }
+html[data-peel-edition="matrix"] :is(button, [role="button"], input[type="submit"]) { background: transparent !important; border: 1px solid currentColor !important; text-transform: uppercase; }
+html[data-peel-edition="matrix"] ::selection { background: #0f0; color: #000; }

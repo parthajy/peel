@@ -1,0 +1,14 @@
+html[data-peel-edition="paper"] { filter: sepia(.3) saturate(.7) contrast(1.05); background: #f1eadb; }
+html[data-peel-edition="paper"] body { background-color: #f6f1e4 !important; }
+html[data-peel-edition="paper"] *:not(svg *):not(pre):not(code):not(kbd):not(i[class]) { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif !important; text-shadow: none !important; }
+html[data-peel-edition="paper"] * { border-radius: 0 !important; box-shadow: none !important; }
+html[data-peel-edition="paper"] :is(h1, h2, h3, h4):not(svg *) { font-family: "Didot", "Bodoni 72", "Playfair Display", "Times New Roman", serif !important; font-weight: 700 !important; letter-spacing: -.01em; line-height: 1.1 !important; }
+html[data-peel-edition="paper"] a:not([role="button"]) { color: #1a1a1a !important; text-decoration: underline !important; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+html[data-peel-edition="paper"] :is(img, video, picture) { filter: grayscale(1) contrast(1.18) brightness(1.03); }
+html[data-peel-edition="paper"] :is(p, li) { line-height: 1.5 !important; }
+html[data-peel-edition="paper"] p { text-align: justify; hyphens: auto; }
+html[data-peel-edition="paper"] :is(article, main, [role="main"]) p:first-of-type::first-letter { font-family: "Didot", Georgia, serif; font-size: 3.1em; float: left; line-height: .78; padding: .06em .1em 0 0; color: #8b0000; }
+html[data-peel-edition="paper"] :is(button, [role="button"], input[type="submit"], input[type="button"]) { background: #f6f1e4 !important; color: #111 !important; border: 1px solid #111 !important; text-transform: uppercase; letter-spacing: .08em; font-size: .85em !important; }
+html[data-peel-edition="paper"] :is(input, textarea, select) { background: #fbf8f0 !important; border: 1px solid #333 !important; color: #111 !important; }
+html[data-peel-edition="paper"] hr { border: 0 !important; border-top: 3px double #111 !important; }
+html[data-peel-edition="paper"] ::selection { background: #111; color: #f6f1e4; }

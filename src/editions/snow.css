@@ -1,0 +1,7 @@
+html[data-peel-edition="snow"] { filter: saturate(.75) brightness(1.04) contrast(.98) hue-rotate(-6deg); background: #eef3f8; }
+html[data-peel-edition="snow"] body { background-color: #f3f6fa !important; }
+html[data-peel-edition="snow"] :is(img, video, picture) { filter: saturate(.8) brightness(1.03) contrast(.97); }
+html[data-peel-edition="snow"] :is(article, [class*="card"], [class*="Card"], [class*="post"], [class*="tile"]) { box-shadow: 0 -6px 0 -2px #fff, 0 12px 30px -18px rgba(40,70,110,.5) !important; border-radius: 14px !important; }
+html[data-peel-edition="snow"] :is(h1, h2, h3):not(svg *) { color: #1f3a5f !important; text-shadow: 0 1px 0 #fff; }
+html[data-peel-edition="snow"] a:not([role="button"]) { color: #2563eb !important; }
+html[data-peel-edition="snow"] ::selection { background: #bfdbfe; }

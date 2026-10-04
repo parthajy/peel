@@ -1,0 +1,23 @@
+html[data-peel-edition="y1996"], html[data-peel-edition="y1996"] body { background: #c0c0c0 !important; background-image: none !important; color: #000 !important; }
+html[data-peel-edition="y1996"] *:not(svg *) { font-family: "Times New Roman", Times, serif !important; border-radius: 0 !important; box-shadow: none !important; text-shadow: none !important; transition: none !important; animation-duration: 0s !important; letter-spacing: 0 !important; }
+html[data-peel-edition="y1996"] :is(h1, h2, h3):not(svg *) { font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive !important; color: #000080 !important; font-weight: 700 !important; }
+html[data-peel-edition="y1996"] h1 { text-decoration: underline !important; }
+html[data-peel-edition="y1996"] a:not([role="button"]) { color: #0000ee !important; text-decoration: underline !important; }
+html[data-peel-edition="y1996"] a:visited:not([role="button"]) { color: #551a8b !important; }
+html[data-peel-edition="y1996"] a:hover:not([role="button"]) { color: #ff0000 !important; }
+html[data-peel-edition="y1996"] :is(button, [role="button"], input[type="submit"], input[type="button"], select) { background: #c0c0c0 !important; color: #000 !important; border: 2px outset #fff !important; font-family: "MS Sans Serif", Arial, sans-serif !important; font-size: 12px !important; padding: 2px 10px !important; background-image: none !important; }
+html[data-peel-edition="y1996"] :is(button, [role="button"]):active { border-style: inset !important; }
+html[data-peel-edition="y1996"] :is(input:not([type="submit"]):not([type="button"]), textarea) { background: #fff !important; color: #000 !important; border: 2px inset #808080 !important; }
+html[data-peel-edition="y1996"] :is(img, video) { image-rendering: pixelated; filter: url(#peel-posterize) contrast(1.08) saturate(1.25); border: 2px solid #000080; }
+html[data-peel-edition="y1996"] :is(table, td, th) { border: 1px inset #808080 !important; }
+html[data-peel-edition="y1996"] hr { border: 0 !important; border-top: 2px groove #fff !important; }
+html[data-peel-edition="y1996"] :is(article, section, [class*="card"], [class*="post"]) { border: 2px inset #808080; background: #c0c0c0 !important; }
+html[data-peel-edition="y1996"] ::selection { background: #000080; color: #fff; }
+.fx-marquee { position: fixed; top: 0; left: 0; right: 0; height: 22px; background: #000; color: #0f0; font: bold 14px/22px "Times New Roman", serif; overflow: hidden; white-space: nowrap; pointer-events: none; border-bottom: 2px solid #ff0; }
+.fx-marquee span { display: inline-block; padding-left: 100vw; animation: fx-marquee 40s linear infinite; }
+@keyframes fx-marquee { to { transform: translateX(-66%); } }
+.fx-counter { position: fixed; left: 12px; bottom: 12px; background: #c0c0c0; border: 2px outset #fff; padding: 4px 8px; font: 12px "MS Sans Serif", Arial, sans-serif; color: #000; pointer-events: none; }
+.fx-counter b { display: inline-flex; gap: 1px; margin-left: 6px; vertical-align: middle; }
+.fx-counter i { font-style: normal; background: #000; color: #0f0; font: bold 13px/18px "Courier New", monospace; padding: 0 3px; }
+.fx-construction { position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%) rotate(-2deg); padding: 4px 14px; font: bold 12px "Arial Black", Arial, sans-serif; color: #000; letter-spacing: .1em; pointer-events: none;
+  background: repeating-linear-gradient(45deg, #ffd800 0 12px, #000 12px 24px); -webkit-text-stroke: 3px #ffd800; paint-order: stroke fill; }

@@ -1,0 +1,44 @@
+/* Peel – sounds, all synthesized with WebAudio. No files, no network. Off unless the user turns them on. */
+(function () {
+  const Peel = (window.Peel = window.Peel || {});
+  let ac = null, master = null, enabled = false, loops = new Map(), unlocked = false;
+  const ctx = () => { if (!ac) { try { ac = new (window.AudioContext || window.webkitAudioContext)(); master = ac.createGain(); master.gain.value = 0.35; master.connect(ac.destination); } catch { return null; } } if (ac.state === 'suspended') ac.resume().catch(() => {}); return ac; };
+  const noise = (sec) => { const a = ctx(); const buf = a.createBuffer(1, Math.ceil(a.sampleRate * sec), a.sampleRate); const d = buf.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; const s = a.createBufferSource(); s.buffer = buf; return s; };
+  const env = (g, t0, a, d, peak = 1) => { g.gain.setValueAtTime(0.0001, t0); g.gain.exponentialRampToValueAtTime(peak, t0 + a); g.gain.exponentialRampToValueAtTime(0.0001, t0 + a + d); };
+  const tone = (freq, t0, dur, type = 'sine', peak = .4) => { const a = ctx(); const o = a.createOscillator(); const g = a.createGain(); o.type = type; o.frequency.setValueAtTime(freq, t0); env(g, t0, .01, dur, peak); o.connect(g).connect(master); o.start(t0); o.stop(t0 + dur + .05); return o; };
+
+  const ONE = {
+    rip() { const a = ctx(); const t = a.currentTime; const n = noise(.7); const f = a.createBiquadFilter(); f.type = 'bandpass'; f.Q.value = .8; f.frequency.setValueAtTime(600, t); f.frequency.exponentialRampToValueAtTime(3200, t + .55); const g = a.createGain(); env(g, t, .02, .6, .9); n.connect(f).connect(g).connect(master); n.start(t); },
+    clunk() { const a = ctx(); const t = a.currentTime; tone(90, t, .18, 'sine', .8); const n = noise(.08); const g = a.createGain(); env(g, t, .005, .07, .5); n.connect(g).connect(master); n.start(t); tone(1800, t + .09, .03, 'square', .15); },
+    type() { const a = ctx(); const t = a.currentTime; const n = noise(.03); const f = a.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = 2500; const g = a.createGain(); env(g, t, .002, .03, .5); n.connect(f).connect(g).connect(master); n.start(t); },
+    splat() { const a = ctx(); const t = a.currentTime; const n = noise(.15); const f = a.createBiquadFilter(); f.type = 'lowpass'; f.frequency.setValueAtTime(900, t); f.frequency.exponentialRampToValueAtTime(120, t + .14); const g = a.createGain(); env(g, t, .004, .14, .9); n.connect(f).connect(g).connect(master); n.start(t); tone(140, t, .08, 'triangle', .3); },
+    pop() { const a = ctx(); const t = a.currentTime; const o = tone(520, t, .09, 'sine', .35); o.frequency.exponentialRampToValueAtTime(180, t + .09); },
+    ding() { const a = ctx(); const t = a.currentTime; tone(880, t, .35, 'sine', .3); tone(1320, t + .02, .3, 'sine', .15); },
+    modem() { const a = ctx(); let t = a.currentTime; tone(1000, t, .25, 'sine', .25); tone(1400, t + .3, .25, 'sine', .25); t += .65; [2100, 1800, 2250, 1650].forEach((f, i) => tone(f, t + i * .12, .1, 'square', .12)); t += .55; const n = noise(1.1); const f = a.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 2400; f.Q.value = .5; const g = a.createGain(); env(g, t, .05, 1.0, .25); n.connect(f).connect(g).connect(master); n.start(t); },
+    flash() { const a = ctx(); const t = a.currentTime; tone(2400, t, .05, 'sine', .2); const n = noise(.25); const f = a.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = 4000; const g = a.createGain(); env(g, t + .05, .01, .2, .25); n.connect(f).connect(g).connect(master); n.start(t); },
+    boom() { const a = ctx(); const t = a.currentTime; const n = noise(.9); const f = a.createBiquadFilter(); f.type = 'lowpass'; f.frequency.setValueAtTime(900, t); f.frequency.exponentialRampToValueAtTime(60, t + .8); const g = a.createGain(); env(g, t, .005, .85, 1.2); n.connect(f).connect(g).connect(master); n.start(t); const o = tone(70, t, .5, 'sine', .9); o.frequency.exponentialRampToValueAtTime(28, t + .5); },
+    crack() { const a = ctx(); const t = a.currentTime; for (let i = 0; i < 5; i++) { const n = noise(.05); const f = a.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = 1200 + i * 700; const g = a.createGain(); env(g, t + i * .03, .002, .06, .6); n.connect(f).connect(g).connect(master); n.start(t + i * .03); } tone(220, t, .18, 'triangle', .3); },
+    whoosh() { const a = ctx(); const t = a.currentTime; const n = noise(.7); const f = a.createBiquadFilter(); f.type = 'bandpass'; f.Q.value = 1.2; f.frequency.setValueAtTime(300, t); f.frequency.exponentialRampToValueAtTime(2600, t + .6); const g = a.createGain(); env(g, t, .15, .5, .5); n.connect(f).connect(g).connect(master); n.start(t); },
+    rewind() { const a = ctx(); const t = a.currentTime; const o = a.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(900, t); o.frequency.linearRampToValueAtTime(2200, t + .6); const f = a.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 1500; f.Q.value = 3; const l = a.createOscillator(); l.frequency.value = 18; const lg = a.createGain(); lg.gain.value = 300; l.connect(lg).connect(o.frequency); const g = a.createGain(); env(g, t, .05, .62, .18); o.connect(f).connect(g).connect(master); o.start(t); l.start(t); o.stop(t + .75); l.stop(t + .75); const n = noise(.7); const ng = a.createGain(); env(ng, t, .05, .6, .08); n.connect(ng).connect(master); n.start(t); },
+    meow() { const a = ctx(); const t = a.currentTime; const o = tone(600, t, .35, 'sawtooth', .12); o.frequency.exponentialRampToValueAtTime(900, t + .12); o.frequency.exponentialRampToValueAtTime(450, t + .35); },
+  };
+  const LOOP = {
+    rain() { const a = ctx(); const n = noise(2); n.loop = true; const f = a.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 1800; f.Q.value = .4; const g = a.createGain(); g.gain.value = .18; const lfo = a.createOscillator(); lfo.frequency.value = .3; const lg = a.createGain(); lg.gain.value = .05; lfo.connect(lg).connect(g.gain); lfo.start(); n.connect(f).connect(g).connect(master); n.start(); return () => { n.stop(); lfo.stop(); }; },
+    water() { const a = ctx(); const n = noise(2); n.loop = true; const f = a.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 320; const g = a.createGain(); g.gain.value = .3; n.connect(f).connect(g).connect(master); n.start(); let alive = true; const blip = () => { if (!alive) return; const t = a.currentTime; const o = tone(300 + Math.random() * 500, t, .12, 'sine', .08); o.frequency.exponentialRampToValueAtTime(1200, t + .12); setTimeout(blip, 700 + Math.random() * 2500); }; setTimeout(blip, 800); return () => { alive = false; n.stop(); }; },
+    hum() { const a = ctx(); const o = a.createOscillator(); o.type = 'sawtooth'; o.frequency.value = 60; const f = a.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 180; const g = a.createGain(); g.gain.value = .06; o.connect(f).connect(g).connect(master); o.start(); return () => o.stop(); },
+    hiss() { const a = ctx(); const n = noise(1); n.loop = true; const f = a.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = 3000; const g = a.createGain(); g.gain.value = .12; n.connect(f).connect(g).connect(master); n.start(); return () => n.stop(); },
+    wind() { const a = ctx(); const n = noise(2); n.loop = true; const f = a.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 400; f.Q.value = .6; const g = a.createGain(); g.gain.value = .12; const lfo = a.createOscillator(); lfo.frequency.value = .08; const lg = a.createGain(); lg.gain.value = 250; lfo.connect(lg).connect(f.frequency); lfo.start(); n.connect(f).connect(g).connect(master); n.start(); return () => { n.stop(); lfo.stop(); }; },
+  };
+  // Browsers only let audio start after a user gesture. Remember gestures; start pending loops then.
+  const pending = new Set();
+  const onGesture = () => { unlocked = true; for (const name of pending) { pending.delete(name); start(name); } };
+  for (const ev of ['pointerdown', 'keydown']) document.addEventListener(ev, onGesture, { capture: true, passive: true });
+  function start(name) { if (!enabled || !LOOP[name] || loops.has(name)) return; if (!unlocked) { pending.add(name); return; } try { loops.set(name, LOOP[name]()); } catch {} }
+  Peel.sound = {
+    setEnabled(on) { enabled = !!on; if (!on) { for (const [, stop] of loops) { try { stop(); } catch {} } loops.clear(); pending.clear(); } },
+    enabled: () => enabled,
+    play(name) { if (!enabled || !unlocked || !ONE[name]) return; try { if (!ctx()) return; ONE[name](); } catch {} },
+    loop(name) { start(name); return () => { pending.delete(name); const stop = loops.get(name); if (stop) { try { stop(); } catch {} loops.delete(name); } }; },
+    list: { one: Object.keys(ONE), loops: Object.keys(LOOP) },
+  };
+})();

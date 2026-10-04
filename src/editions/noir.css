@@ -1,0 +1,3 @@
+html[data-peel-edition="noir"] { filter: grayscale(1) contrast(1.12) brightness(1.02); }
+html[data-peel-edition="noir"] ::selection { background: #000; color: #fff; }
+html[data-peel-edition="noir"] :is(h1, h2) { letter-spacing: .01em; }

@@ -1,0 +1,13 @@
+html[data-peel-edition="pest"] { filter: sepia(.28) saturate(.78) contrast(.96) brightness(.97); }
+html[data-peel-edition="pest"] body { background-color: #efe9dc !important; }
+html[data-peel-edition="pest"] :is(img, video, picture) { filter: sepia(.35) contrast(.92) saturate(.8); }
+html[data-peel-edition="pest"] img:nth-of-type(3n+1) { clip-path: polygon(0 0, 100% 0, 100% 68%, 93% 72%, 96% 81%, 89% 86%, 92% 100%, 0 100%); }
+html[data-peel-edition="pest"] img:nth-of-type(3n+2) { clip-path: polygon(0 12%, 6% 9%, 4% 0, 100% 0, 100% 100%, 0 100%); }
+html[data-peel-edition="pest"] :is(article, [class*="card"], [class*="Card"], [class*="post"], [class*="tile"]):nth-child(odd) { transform: rotate(calc(-.5deg - var(--peel-doom, 0) * 2.5deg)); transition: transform 1.5s; }
+html[data-peel-edition="pest"] :is(article, [class*="card"], [class*="Card"], [class*="post"], [class*="tile"]):nth-child(even) { transform: rotate(calc(.4deg + var(--peel-doom, 0) * 2deg)) translateY(calc(2px + var(--peel-doom, 0) * 10px)); transition: transform 1.5s; }
+html[data-peel-edition="pest"] :is(article, [class*="card"], [class*="Card"], [class*="post"]) { box-shadow: 0 2px 0 rgba(60,40,0,.25), 0 12px 24px -16px rgba(0,0,0,.5) !important; }
+html[data-peel-edition="pest"] :is(h1, h2, h3):nth-of-type(2n) { text-decoration: line-through; text-decoration-color: rgba(90,20,0,.5); text-decoration-thickness: 1px; }
+html[data-peel-edition="pest"] :is(h1, h2):nth-of-type(3n) { letter-spacing: .12em; word-spacing: .3em; }
+html[data-peel-edition="pest"] a:not([role="button"]) { color: #5a3a00 !important; text-decoration: underline wavy !important; }
+html[data-peel-edition="pest"] ::selection { background: #3b5a1a; color: #efe9dc; }
+html[data-peel-edition="pest"] { filter: sepia(calc(.28 + var(--peel-doom, 0) * .3)) saturate(calc(.78 - var(--peel-doom, 0) * .3)) contrast(.96) brightness(calc(.97 - var(--peel-doom, 0) * .12)); transition: filter 2s; }

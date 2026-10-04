@@ -1,0 +1,12 @@
+/* Inverted base pushed to cyanotype blue. Flipped-luminance colours. */
+html[data-peel-edition="blueprint"] { filter: invert(1) hue-rotate(180deg) grayscale(1) sepia(1) hue-rotate(175deg) saturate(4) brightness(.8) contrast(1.1); background: #fff; }
+html[data-peel-edition="blueprint"] :is(canvas, iframe, embed, object, #peel-ui, #peel-fx, #peel-root) { filter: invert(1) hue-rotate(180deg); }
+html[data-peel-edition="blueprint"] :is(img, video, picture) { filter: invert(1) hue-rotate(180deg) grayscale(1) contrast(1.25) brightness(1.05); opacity: .9; outline: 1px dashed rgba(0,0,0,.6); outline-offset: 6px; }
+html[data-peel-edition="blueprint"] *:not(svg *):not(pre):not(code) { font-family: "Avenir Next Condensed", "Futura", "Gill Sans", "Trebuchet MS", sans-serif !important; border-radius: 0 !important; box-shadow: none !important; text-shadow: none !important; }
+html[data-peel-edition="blueprint"] :is(h1, h2, h3):not(svg *) { text-transform: uppercase; letter-spacing: .08em !important; font-weight: 500 !important; }
+html[data-peel-edition="blueprint"] :is(article, [class*="card"], [class*="Card"], [class*="post"], [class*="tile"], aside, nav, header, footer) { border: 1px solid rgba(0,0,0,.7) !important; background: transparent !important; outline: 1px solid rgba(0,0,0,.25); outline-offset: 4px; }
+html[data-peel-edition="blueprint"] :is(button, [role="button"], input[type="submit"]) { background: transparent !important; border: 1px solid currentColor !important; text-transform: uppercase; letter-spacing: .1em; }
+html[data-peel-edition="blueprint"] :is(input, textarea, select) { background: transparent !important; border: 0 !important; border-bottom: 1px dashed currentColor !important; }
+html[data-peel-edition="blueprint"] a:not([role="button"]) { text-decoration: underline !important; text-decoration-style: dashed; text-underline-offset: 3px; }
+html[data-peel-edition="blueprint"] :is(h1, h2):not(svg *)::after { content: " — FIG. " counter(peel-fig); counter-increment: peel-fig; font-size: .5em; letter-spacing: .2em; opacity: .7; vertical-align: middle; }
+html[data-peel-edition="blueprint"] body { counter-reset: peel-fig; }

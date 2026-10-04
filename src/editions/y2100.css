@@ -1,0 +1,12 @@
+/* Flipped-luminance space (see glowy.css): dark values here read bright on screen. */
+html[data-peel-edition="y2100"] { filter: invert(1) hue-rotate(195deg) saturate(1.2) contrast(1.06); background: #f4f2ee; }
+html[data-peel-edition="y2100"] :is(img, video, canvas, picture, iframe, embed, object, svg image, [style*="background-image"], #peel-ui, #peel-fx, #peel-root) { filter: invert(1) hue-rotate(-195deg); }
+html[data-peel-edition="y2100"] [style*="background-image"] :is(img, video, picture) { filter: none; }
+html[data-peel-edition="y2100"] *:not(svg *):not(pre):not(code) { font-family: "SF Pro Display", -apple-system, system-ui, "Segoe UI", Inter, sans-serif !important; }
+html[data-peel-edition="y2100"] :is(h1, h2, h3):not(svg *) { text-transform: uppercase; letter-spacing: .08em !important; font-weight: 300 !important; color: #1b2a2e !important; }
+html[data-peel-edition="y2100"] h1 { background: linear-gradient(90deg, #003a46, #3a0046); -webkit-background-clip: text; background-clip: text; color: transparent !important; font-weight: 500 !important; }
+html[data-peel-edition="y2100"] :is(article, [class*="card"], [class*="Card"], [class*="post"], [class*="tile"], [class*="panel"], aside, nav) { backdrop-filter: blur(10px) saturate(1.2); -webkit-backdrop-filter: blur(10px) saturate(1.2); border: 1px solid rgba(0,0,0,.14) !important; border-radius: 18px !important; box-shadow: 0 1px 0 rgba(0,0,0,.08) inset, 0 10px 40px -20px rgba(0,0,0,.35) !important; }
+html[data-peel-edition="y2100"] :is(img, video) { border-radius: 14px; box-shadow: 0 0 0 1px rgba(0,60,80,.35), 0 12px 30px -12px rgba(0,0,0,.5); }
+html[data-peel-edition="y2100"] a:not([role="button"]) { color: #003846 !important; text-decoration: none !important; border-bottom: 1px solid rgba(0,56,70,.4); }
+html[data-peel-edition="y2100"] :is(button, [role="button"], input[type="submit"]) { border-radius: 999px !important; border: 1px solid rgba(0,0,0,.25) !important; backdrop-filter: blur(6px); letter-spacing: .06em; text-transform: uppercase; font-size: .8em !important; }
+html[data-peel-edition="y2100"] ::selection { background: #004a5a; }

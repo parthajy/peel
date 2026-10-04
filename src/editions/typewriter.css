@@ -1,0 +1,13 @@
+html[data-peel-edition="typewriter"] { background: #efe8d8; filter: contrast(1.04); }
+html[data-peel-edition="typewriter"] body { background: #f4efe3 !important; color: #1b1b1b !important; }
+html[data-peel-edition="typewriter"] *:not(svg *) { font-family: "Courier Prime", "American Typewriter", "Courier New", Courier, monospace !important; border-radius: 0 !important; box-shadow: none !important; text-shadow: 0 0 .6px rgba(0,0,0,.55) !important; letter-spacing: .02em !important; }
+html[data-peel-edition="typewriter"] :is(h1, h2, h3):not(svg *) { font-weight: 700 !important; text-transform: uppercase; letter-spacing: .12em !important; }
+html[data-peel-edition="typewriter"] :is(h1, h2):not(svg *) { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+html[data-peel-edition="typewriter"] :is(p, li) { line-height: 1.75 !important; }
+html[data-peel-edition="typewriter"] :is(article, [class*="card"], [class*="Card"], [class*="post"], [class*="tile"], aside, nav) { background: #f8f3e7 !important; border: 1px solid rgba(0,0,0,.25) !important; }
+html[data-peel-edition="typewriter"] :is(img, video, picture) { filter: grayscale(1) contrast(1.25) sepia(.25); mix-blend-mode: multiply; }
+html[data-peel-edition="typewriter"] :is(button, [role="button"], input[type="submit"]) { background: #1b1b1b !important; color: #f4efe3 !important; border: 0 !important; text-transform: uppercase; letter-spacing: .14em !important; }
+html[data-peel-edition="typewriter"] :is(input:not([type="submit"]), textarea, select) { background: #fffdf7 !important; border: 0 !important; border-bottom: 2px solid #1b1b1b !important; color: #1b1b1b !important; }
+html[data-peel-edition="typewriter"] a:not([role="button"]) { color: #1b1b1b !important; text-decoration: underline !important; text-decoration-style: double; }
+html[data-peel-edition="typewriter"] strong, html[data-peel-edition="typewriter"] b { text-shadow: .6px 0 0 currentColor, 0 0 .6px rgba(0,0,0,.55) !important; }
+html[data-peel-edition="typewriter"] ::selection { background: #1b1b1b; color: #f4efe3; }

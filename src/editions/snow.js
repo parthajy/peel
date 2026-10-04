@@ -1,0 +1,2 @@
+/* Snow – cold grade, frost at the edges, snow with a little wind. */
+Peel.registerEdition({ id: 'snow', name: 'Snow', emoji: '❄️', tagline: 'Cold outside, cold inside', pack: 'weather', css: 'src/editions/snow.css', fx: [{ type: 'burst', kind: 'snow' }, { type: 'companion', kind: 'cat', color: 'orange' }, { type: 'sound', loop: 'wind' }, 'frost:.55', { type: 'particles', preset: 'snow', count: 120, wind: .35 }] });

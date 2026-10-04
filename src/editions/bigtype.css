@@ -1,0 +1,10 @@
+html[data-peel-edition="bigtype"] { filter: contrast(1.12) saturate(.9); font-size: 125% !important; }
+html[data-peel-edition="bigtype"] body { background-color: #fffdf7 !important; color: #111 !important; }
+html[data-peel-edition="bigtype"] *:not(svg *):not(pre):not(code) { font-family: -apple-system, system-ui, "Segoe UI", "Helvetica Neue", Arial, sans-serif !important; letter-spacing: .01em !important; text-shadow: none !important; }
+html[data-peel-edition="bigtype"] :is(p, li, td, dd, span, label, a, time, small) { font-size: max(1.05em, 18px) !important; line-height: 1.7 !important; }
+html[data-peel-edition="bigtype"] :is(h1, h2, h3) { line-height: 1.2 !important; font-weight: 800 !important; }
+html[data-peel-edition="bigtype"] h1 { font-size: 2.4rem !important; } html[data-peel-edition="bigtype"] h2 { font-size: 1.9rem !important; } html[data-peel-edition="bigtype"] h3 { font-size: 1.5rem !important; }
+html[data-peel-edition="bigtype"] a:not([role="button"]) { text-decoration: underline !important; text-decoration-thickness: 2px; text-underline-offset: 3px; color: #0b57d0 !important; }
+html[data-peel-edition="bigtype"] :is(button, [role="button"], input, select, textarea) { font-size: 1.1em !important; min-height: 44px; }
+html[data-peel-edition="bigtype"] :is(button, [role="button"], a):focus-visible { outline: 4px solid #ff7a1a !important; outline-offset: 2px; }
+html[data-peel-edition="bigtype"] ::selection { background: #ffd27a; }

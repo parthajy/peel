@@ -1,0 +1,8 @@
+html[data-peel-edition="underwater"] { filter: hue-rotate(-20deg) saturate(.9) brightness(.9) contrast(1.05) url(#peel-ripple); background: #0b3a5c; }
+html[data-peel-edition="underwater"] body { background-color: #cfe6ee !important; }
+html[data-peel-edition="underwater"] body::before { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 2147483000; background: linear-gradient(180deg, rgba(0,120,170,.08), rgba(0,40,90,.35)); mix-blend-mode: multiply; }
+html[data-peel-edition="underwater"] :is(img, video, picture) { filter: hue-rotate(-15deg) saturate(.85) brightness(.9) blur(.3px); border-radius: 50% 40% 45% 55% / 45% 55% 40% 50%; }
+html[data-peel-edition="underwater"] :is(h1, h2, h3):not(svg *) { color: #063a52 !important; text-shadow: 0 0 12px rgba(120,220,255,.6); }
+html[data-peel-edition="underwater"] :is(article, [class*="card"], [class*="Card"], [class*="post"], [class*="tile"]) { border-radius: 24px !important; box-shadow: 0 0 0 1px rgba(255,255,255,.4) inset, 0 12px 30px -20px rgba(0,30,60,.7) !important; background-color: rgba(255,255,255,.55) !important; }
+html[data-peel-edition="underwater"] a:not([role="button"]) { color: #0e7490 !important; }
+html[data-peel-edition="underwater"] ::selection { background: #67e8f9; }

@@ -1,0 +1,13 @@
+html[data-peel-edition="haunted"] { filter: saturate(.35) contrast(1.15) brightness(.82) sepia(.15); background: #0b0a0c; }
+html[data-peel-edition="haunted"] body { background-color: #1a1719 !important; color: #cfc8c0 !important; }
+html[data-peel-edition="haunted"] *:not(svg *):not(pre):not(code) { font-family: "Baskerville", "Didot", "Times New Roman", serif !important; }
+html[data-peel-edition="haunted"] :is(article, [class*="card"], [class*="Card"], [class*="post"], [class*="tile"], aside, nav, header, footer) { background-color: #221e21 !important; color: #d8d0c8 !important; border: 1px solid #3a3236 !important; box-shadow: 0 30px 50px -30px #000 !important; }
+html[data-peel-edition="haunted"] :is(h1, h2, h3, p, li, span, a, td, th, label, time, small) { color: #d8d0c8 !important; }
+html[data-peel-edition="haunted"] :is(h1, h2, h3):not(svg *) { letter-spacing: .06em !important; text-shadow: 0 0 18px rgba(255,255,255,.25); font-weight: 400 !important; }
+html[data-peel-edition="haunted"] :is(img, video, picture) { filter: grayscale(.8) contrast(1.25) brightness(.7) sepia(.2); transition: filter 1.2s ease, transform 1.2s ease; }
+html[data-peel-edition="haunted"] :is(img, video, picture):hover { filter: grayscale(1) contrast(1.6) brightness(.45) invert(.08); transform: scale(1.02) rotate(-.4deg); }
+html[data-peel-edition="haunted"] a:not([role="button"]) { color: #b8a1c9 !important; text-decoration: none !important; }
+html[data-peel-edition="haunted"] a:hover:not([role="button"]) { color: #ff6b6b !important; text-shadow: 0 0 10px #ff0000; }
+html[data-peel-edition="haunted"] :is(button, [role="button"], input[type="submit"]) { background: #000 !important; color: #cfc8c0 !important; border: 1px solid #5a4d55 !important; }
+html[data-peel-edition="haunted"] ::selection { background: #5a0a0a; color: #fff; }
+html[data-peel-edition="haunted"] { filter: saturate(calc(.35 - var(--peel-doom, 0) * .3)) contrast(calc(1.15 + var(--peel-doom, 0) * .2)) brightness(calc(.82 - var(--peel-doom, 0) * .25)) sepia(.15); transition: filter 2s; }

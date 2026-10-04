@@ -1,0 +1,6 @@
+html[data-peel-edition="asteroids"] { filter: invert(1) hue-rotate(180deg) saturate(.7) brightness(.9); background: #fff; }
+html[data-peel-edition="asteroids"] :is(img, video, canvas, picture, iframe, embed, object, svg image, [style*="background-image"], #peel-ui, #peel-fx, #peel-root) { filter: invert(1) hue-rotate(180deg); }
+html[data-peel-edition="asteroids"] [style*="background-image"] :is(img, video, picture) { filter: none; }
+html[data-peel-edition="asteroids"] *:not(svg *) { font-family: ui-monospace, "SF Mono", Menlo, monospace !important; }
+html[data-peel-edition="asteroids"] :is(img, video) { outline: 1px solid rgba(0,0,0,.4); outline-offset: 3px; }
+html[data-peel-edition="asteroids"] body { cursor: crosshair; }

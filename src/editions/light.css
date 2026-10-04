@@ -1,0 +1,10 @@
+html[data-peel-edition="light"] { filter: saturate(.78) contrast(.98); background: #fafaf9; }
+html[data-peel-edition="light"] body { background-color: #fafaf9 !important; }
+html[data-peel-edition="light"] *:not(svg *):not(pre):not(code):not(kbd):not(i[class]) { font-family: -apple-system, system-ui, "Segoe UI", Inter, Roboto, "Helvetica Neue", sans-serif !important; letter-spacing: -.005em; text-shadow: none !important; }
+html[data-peel-edition="light"] :is(p, li) { line-height: 1.6 !important; }
+html[data-peel-edition="light"] :is(h1, h2, h3) { letter-spacing: -.02em !important; font-weight: 700 !important; }
+html[data-peel-edition="light"] * { box-shadow: none !important; transition-duration: .12s !important; }
+html[data-peel-edition="light"] :is(img, video) { border-radius: 10px; filter: saturate(.92); }
+html[data-peel-edition="light"] a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+html[data-peel-edition="light"] :is(button, [role="button"], input, select, textarea) { border-radius: 10px !important; }
+html[data-peel-edition="light"] ::selection { background: #ffd8c2; }

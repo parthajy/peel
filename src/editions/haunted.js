@@ -1,0 +1,2 @@
+/* Haunted – fog, flicker, text that rots, and something in the pictures when you hover. */
+Peel.registerEdition({ id: 'haunted', name: 'Haunted', emoji: '👻', tagline: 'It was fine a minute ago', pack: 'weird', css: 'src/editions/haunted.css', fx: [{ type: 'burst', kind: 'bats' }, { type: 'sound', loop: 'wind' }, 'fog:.5', 'vignette', 'grain:.14', 'dust:.3', { type: 'ambient', kinds: ['flicker', 'decay', 'twitch'], every: 2000, max: 500 }, { type: 'particles', preset: 'fireflies', count: 10, opacity: .6 }] });

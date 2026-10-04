@@ -1,0 +1,2 @@
+/* Underwater – caustic light, bubbles, a slow wave through everything. */
+Peel.registerEdition({ id: 'underwater', name: 'Underwater', emoji: '🐠', tagline: 'Twenty thousand pixels under', pack: 'weather', css: 'src/editions/underwater.css', fx: [{ type: 'burst', kind: 'splash' }, { type: 'sound', loop: 'water' }, 'filters', 'caustics:.4', 'vignette:.8', { type: 'particles', preset: 'bubbles', count: 40 }, { type: 'ambient', kinds: ['sway'] }] });
