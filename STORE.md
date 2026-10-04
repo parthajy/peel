@@ -68,4 +68,8 @@ Tick none of the data types. Certify all three disclosures. Peel does not collec
 
 ## Privacy policy URL
 
-Publish PRIVACY.md at a public URL (GitHub repo, GitHub Pages or a public Gist) and paste that link.
+https://github.com/parthajy/peel/blob/main/PRIVACY.md
+
+## Support / homepage URL
+
+https://github.com/parthajy/peel
